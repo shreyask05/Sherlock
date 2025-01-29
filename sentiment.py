@@ -1,13 +1,16 @@
 from ntscraper import Nitter
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def main():
     scraper = Nitter(log_level=1, skip_instance_check=False)
-    keywords = ["devin booker", "kevin durant"]
-    scrape = scraper.get_tweets(keywords, mode='term',number=1)
-    print(scrape)
-    print("----------------------------")
+    keywords = ["donald trump"]
+    scrape = scraper.get_tweets(keywords, mode='term',number=5)
+    analyzer = SentimentIntensityAnalyzer()
     only_text = [tweet['text'] for tweet in scrape['tweets']]
-    print(only_text)
+    for tweet in only_text:
+        sentiment = analyzer.polarity_scores(tweet)
+        print(f"Tweet: {tweet}")
+        print(f"Sentiment Scores: {sentiment}\n")
 
 if __name__ == "__main__":
     main()
