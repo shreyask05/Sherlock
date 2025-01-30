@@ -5,12 +5,10 @@ import datetime
 import time
 
 
-
-
 def send_email(subject, body):
     try:
         sender_email = "sherlockbriefing@gmail.com"
-        receiver_email = "skonanki05@gmail.com"
+        receiver_email = "pranumantri@gmail.com"
         text = f"Subject: {subject} \n\n {body}"
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
@@ -27,7 +25,7 @@ def main():
         print("email bot running")
         # Check current time against sending time
         hour = 16
-        minute = 43
+        minute = 52
         if datetime.datetime.now().hour == hour and datetime.datetime.now().minute == minute:
             subject = 'Test email notification'
             body = 'hello! here will be some news and stuff. \n have a great day!'
